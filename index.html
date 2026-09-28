@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SupportAI</title>
+    <script>
+    if (localStorage.getItem("supportAILoggedIn") !== "true") {
+        window.location.href = "login.html";
+    }
+</script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <div class="logo">
+        🤖 SupportAI
+    </div>
+
+    <nav>
+        <a href="#" onclick="showSection('dashboard')">Dashboard</a>
+        <a href="#" onclick="showSection('history')">History</a>
+        <a href="#" onclick="showSection('analytics')">Analytics</a>
+        <a href="#" onclick="logout()">Logout</a>
+    </nav>
+
+    <button class="profile" onclick="showProfile()">
+        👤
+    </button>
+
+</header>
+
+
+<main>
+
+
+<!-- ================= DASHBOARD ================= -->
+
+<section id="dashboard" class="page-section">
+
+    <section class="hero">
+
+        <span class="badge">
+            ✨ GENERATIVE AI
+        </span>
+
+        <h1>
+            Customer Support
+            <span>Response Drafting Assistant</span>
+        </h1>
+
+        <p>
+            Generate intelligent, personalized and professional
+            customer support responses using Generative AI.
+        </p>
+
+    </section>
+
+
+    <section class="workspace">
+
+
+        <!-- CUSTOMER INPUT -->
+
+        <div class="panel">
+
+            <div class="panel-header">
+
+                <div>
+                    <h2>Customer Message</h2>
+
+                    <p>
+                        Enter the customer's query
+                    </p>
+                </div>
+
+                <span class="status">
+                    ● Ready
+                </span>
+
+            </div>
+
+
+            <textarea
+                id="customerMessage"
+                placeholder="Example: My order arrived damaged and I want a refund...">
+            </textarea>
+
+
+            <div class="controls">
+
+
+                <div class="control">
+
+                    <label>Response Tone</label>
+
+                    <select id="tone">
+
+                        <option>Professional</option>
+                        <option>Friendly</option>
+                        <option>Empathetic</option>
+                        <option>Apologetic</option>
+                        <option>Formal</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="control">
+
+                    <label>Language</label>
+
+                    <select id="language">
+
+                        <option>English</option>
+                        <option>Hindi</option>
+                        <option>Hinglish</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="control">
+
+                    <label>Length</label>
+
+                    <select id="length">
+
+                        <option>Short</option>
+                        <option selected>Medium</option>
+                        <option>Detailed</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="generate-btn"
+                onclick="generateResponse()">
+
+                ✨ Generate AI Response
+
+            </button>
+
+        </div>
+
+
+        <!-- AI RESPONSE -->
+
+        <div class="panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h2>AI Response</h2>
+
+                    <p>
+                        Generated customer response
+                    </p>
+
+                </div>
+
+                <button
+                    class="copy-btn"
+                    onclick="copyResponse()">
+
+                    📋 Copy
+
+                </button>
+
+            </div>
+
+
+            <div id="responseBox"
+                 class="response-box">
+
+                <div class="empty-state">
+
+                    <div class="ai-icon">
+                        🤖
+                    </div>
+
+                    <h3>Ready to generate</h3>
+
+                    <p>
+                        Enter a customer message and click
+                        Generate AI Response.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="response-actions">
+
+                <button onclick="regenerate()">
+                    🔄 Regenerate
+                </button>
+
+                <button onclick="likeResponse()">
+                    👍 Helpful
+                </button>
+
+                <button onclick="dislikeResponse()">
+                    👎 Improve
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- AI ANALYSIS -->
+
+    <section class="analysis">
+
+        <h2>AI Analysis</h2>
+
+        <div class="analysis-grid">
+
+
+            <div class="metric">
+
+                <span>🎯 Intent</span>
+
+                <strong id="intent">
+                    —
+                </strong>
+
+            </div>
+
+
+            <div class="metric">
+
+                <span>😊 Sentiment</span>
+
+                <strong id="sentiment">
+                    —
+                </strong>
+
+            </div>
+
+
+            <div class="metric">
+
+                <span>📊 Confidence</span>
+
+                <strong id="confidence">
+                    —
+                </strong>
+
+            </div>
+
+
+            <div class="metric">
+
+                <span>⭐ Response Score</span>
+
+                <strong id="score">
+                    —
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</section>
+
+
+<!-- ================= HISTORY ================= -->
+
+<section id="history" class="page-section" style="display:none;">
+
+    <section class="hero">
+
+        <span class="badge">
+            🕘 RESPONSE HISTORY
+        </span>
+
+        <h1>
+            Response <span>History</span>
+        </h1>
+
+        <p>
+            View previously generated customer support responses.
+        </p>
+
+    </section>
+
+
+    <section class="panel history-panel">
+
+        <div class="panel-header">
+
+            <div>
+                <h2>Generated Responses</h2>
+
+                <p>
+                    Your recent AI-generated responses
+                </p>
+            </div>
+
+            <button
+                class="copy-btn"
+                onclick="clearHistory()">
+
+                🗑️ Clear History
+
+            </button>
+
+        </div>
+
+
+        <div id="historyList">
+
+            <div class="empty-state">
+
+                <div class="ai-icon">
+                    🕘
+                </div>
+
+                <h3>No history yet</h3>
+
+                <p>
+                    Generate your first AI response to see it here.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</section>
+
+
+<!-- ================= ANALYTICS ================= -->
+
+<section id="analytics" class="page-section" style="display:none;">
+
+    <section class="hero">
+
+        <span class="badge">
+            📊 AI ANALYTICS
+        </span>
+
+        <h1>
+            Support <span>Analytics</span>
+        </h1>
+
+        <p>
+            Overview of your AI response generation activity.
+        </p>
+
+    </section>
+
+
+    <section class="analysis">
+
+        <h2>Performance Overview</h2>
+
+        <div class="analysis-grid">
+
+
+            <div class="metric">
+
+                <span>🤖 Total Responses</span>
+
+                <strong id="totalResponses">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="metric">
+
+                <span>👍 Helpful</span>
+
+                <strong id="helpfulResponses">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="metric">
+
+                <span>👎 Improvements</span>
+
+                <strong id="improveResponses">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="metric">
+
+                <span>⭐ Average Score</span>
+
+                <strong id="averageScore">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</section>
+
+
+</main>
+
+
+<footer>
+
+    <p>
+        © 2026 SupportAI • Generative AI Customer Support Assistant
+    </p>
+
+</footer>
+
+
+<script src="app.js"></script>
+
+</body>
+
+</html>

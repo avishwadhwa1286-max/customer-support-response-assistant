@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SupportAI - Login</title>
+
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+
+    <div class="login-container">
+
+        <div class="login-card">
+
+            <div class="logo">
+                🤖
+            </div>
+
+            <h1>SupportAI</h1>
+
+            <p class="subtitle">
+                Customer Support Response Assistant
+            </p>
+
+            <form id="loginForm">
+
+                <div class="input-group">
+                    <label>Username</label>
+
+                    <input
+                        type="text"
+                        id="username"
+                        placeholder="Enter your username"
+                        required
+                    >
+                </div>
+
+                <div class="input-group">
+                    <label>Password</label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter your password"
+                        required
+                    >
+                </div>
+
+                <p id="loginError" class="error"></p>
+
+                <button type="submit" class="login-btn">
+                    Login
+                </button>
+                <p class="register-text">
+    Don't have an account?
+    <a href="#" id="showRegister">Create Account</a>
+</p>
+
+            </form>
+            <div id="registerBox" style="display: none;">
+
+    <h2>Create Account</h2>
+
+    <form id="registerForm">
+
+        <div class="input-group">
+            <label>Username</label>
+
+            <input
+                type="text"
+                id="registerUsername"
+                placeholder="Choose a username"
+                required
+            >
+        </div>
+
+        <div class="input-group">
+            <label>Password</label>
+
+            <input
+                type="password"
+                id="registerPassword"
+                placeholder="Create a password"
+                required
+            >
+        </div>
+
+        <p id="registerError" class="error"></p>
+
+        <button type="submit" class="login-btn">
+            Create Account
+        </button>
+
+    </form>
+
+    <p class="register-text">
+        Already have an account?
+        <a href="#" id="backToLogin">Login</a>
+    </p>
+
+</div>
+
+        </div>
+
+    </div>
+
+    <script src="login.js"></script>
+
+</body>
+
+</html>

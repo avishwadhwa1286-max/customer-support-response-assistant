@@ -1,0 +1,423 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f7fb;
+    color: #172033;
+}
+
+
+/* NAVBAR */
+
+.navbar {
+    height: 70px;
+    background: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 7%;
+
+    border-bottom: 1px solid #e8eaf0;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+nav {
+    display: flex;
+    gap: 35px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #606778;
+    font-size: 14px;
+}
+
+.profile {
+    border: none;
+    background: #f0f2ff;
+
+    width: 40px;
+    height: 40px;
+
+    border-radius: 50%;
+}
+
+
+/* HERO */
+
+.hero {
+    text-align: center;
+
+    max-width: 800px;
+
+    margin: 60px auto 40px;
+
+    padding: 0 20px;
+}
+
+.badge {
+    display: inline-block;
+
+    background: #eef0ff;
+    color: #5556d9;
+
+    padding: 7px 14px;
+
+    border-radius: 30px;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.hero h1 {
+    font-size: 48px;
+
+    margin-top: 18px;
+    line-height: 1.15;
+}
+
+.hero h1 span {
+    display: block;
+    color: #5b5ce2;
+}
+
+.hero p {
+    margin-top: 18px;
+
+    color: #73798a;
+
+    line-height: 1.6;
+}
+
+
+/* WORKSPACE */
+
+.workspace {
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    padding: 20px;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 25px;
+}
+
+
+/* PANEL */
+
+.panel {
+
+    background: white;
+
+    border: 1px solid #e6e8ef;
+
+    border-radius: 18px;
+
+    padding: 25px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,.04);
+}
+
+.panel-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    margin-bottom: 20px;
+}
+
+.panel-header h2 {
+    font-size: 20px;
+}
+
+.panel-header p {
+    color: #8a8f9e;
+
+    margin-top: 5px;
+
+    font-size: 13px;
+}
+
+.status {
+    color: #16a34a;
+
+    font-size: 12px;
+}
+
+
+/* TEXTAREA */
+
+textarea {
+
+    width: 100%;
+
+    height: 220px;
+
+    resize: none;
+
+    border: 1px solid #dddfea;
+
+    border-radius: 12px;
+
+    padding: 16px;
+
+    font-size: 15px;
+
+    outline: none;
+}
+
+textarea:focus {
+    border-color: #6366e8;
+}
+
+
+/* CONTROLS */
+
+.controls {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 12px;
+
+    margin-top: 18px;
+}
+
+.control label {
+
+    display: block;
+
+    font-size: 12px;
+
+    color: #707687;
+
+    margin-bottom: 7px;
+}
+
+select {
+
+    width: 100%;
+
+    padding: 11px;
+
+    border: 1px solid #dddfea;
+
+    border-radius: 9px;
+
+    background: white;
+}
+
+
+/* GENERATE */
+
+.generate-btn {
+
+    width: 100%;
+
+    margin-top: 20px;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #5b5ce2;
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.generate-btn:hover {
+    background: #4849c7;
+}
+
+
+/* RESPONSE */
+
+.response-box {
+
+    min-height: 220px;
+
+    background: #f8f9fc;
+
+    border-radius: 12px;
+
+    padding: 20px;
+
+    line-height: 1.7;
+}
+
+.empty-state {
+
+    text-align: center;
+
+    padding-top: 50px;
+
+    color: #8a8f9e;
+}
+
+.ai-icon {
+    font-size: 40px;
+
+    margin-bottom: 10px;
+}
+
+
+/* COPY */
+
+.copy-btn {
+
+    border: none;
+
+    background: #f0f1ff;
+
+    color: #5657d7;
+
+    padding: 8px 12px;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+}
+
+
+/* ACTIONS */
+
+.response-actions {
+
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 15px;
+}
+
+.response-actions button {
+
+    flex: 1;
+
+    padding: 10px;
+
+    border: 1px solid #dddfea;
+
+    background: white;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+}
+
+
+/* ANALYSIS */
+
+.analysis {
+
+    max-width: 1160px;
+
+    margin: 30px auto;
+
+    padding: 25px;
+}
+
+.analysis h2 {
+    margin-bottom: 18px;
+}
+
+.analysis-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 15px;
+}
+
+.metric {
+
+    background: white;
+
+    border: 1px solid #e7e9f0;
+
+    border-radius: 12px;
+
+    padding: 20px;
+}
+
+.metric span {
+
+    display: block;
+
+    color: #777d8e;
+
+    font-size: 13px;
+
+    margin-bottom: 10px;
+}
+
+.metric strong {
+    font-size: 18px;
+}
+
+
+/* FOOTER */
+
+footer {
+
+    text-align: center;
+
+    padding: 30px;
+
+    color: #8b90a0;
+
+    font-size: 13px;
+}
+
+
+/* RESPONSIVE */
+
+@media(max-width: 850px) {
+
+    .workspace {
+        grid-template-columns: 1fr;
+    }
+
+    .analysis-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    nav {
+        display: none;
+    }
+
+    .hero h1 {
+        font-size: 35px;
+    }
+}
