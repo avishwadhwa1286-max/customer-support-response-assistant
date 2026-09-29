@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 from dotenv import load_dotenv
 from google import genai
@@ -26,14 +26,29 @@ client = genai.Client(
 # --------------------------------
 # HOME / API STATUS
 # --------------------------------
+FRONTEND_DIR = os.path.dirname(os.path.abspath(__file__))
+
 @app.route("/", methods=["GET"])
 def home():
+    return send_from_directory(FRONTEND_DIR, "login.html")
 
-    return jsonify({
-        "success": True,
-        "message": "Customer Support Response Drafting Assistant API is running",
-        "status": "online"
-    })
+
+@app.route("/<path:filename>")
+def frontend_files(filename):
+
+    allowed_files = {
+        "login.html",
+        "login.css",
+        "login.js",
+        "index.html",
+        "style.css",
+        "app.js"
+    }
+
+    if filename in allowed_files:
+        return send_from_directory(FRONTEND_DIR, filename)
+
+    return jsonify({"error": "Page not found"}), 404
 # ------------------------------
 # ------------------------------
 # REGISTER API
